@@ -3,7 +3,6 @@
 import {
 	Activity,
 	Award,
-	BarChart2,
 	Clock,
 	DollarSign,
 	Leaf,
@@ -385,7 +384,7 @@ const SuiSuiDriveDashboard = () => {
 								Safe Driving Rankings
 							</h2>
 							<p className="text-xs text-gray-500">
-								This week's top drivers (out of 240)
+								This week&apos;s top drivers (out of 240)
 							</p>
 						</div>
 
