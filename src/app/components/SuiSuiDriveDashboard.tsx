@@ -54,10 +54,28 @@ const SuiSuiDriveDashboard = () => {
 
 	// Badge data
 	const badges = [
-		{ name: "Eco Driver", icon: <Leaf />, level: 3, progress: 85 },
-		{ name: "Smooth Driver", icon: <TrendingUp />, level: 4, progress: 92 },
-		{ name: "Safe Driver", icon: <Shield />, level: 2, progress: 68 },
-		{ name: "Regular Driver", icon: <Clock />, level: 5, progress: 100 },
+		{ id: "eco", name: "Eco Driver", icon: <Leaf />, level: 3, progress: 85 },
+		{
+			id: "smooth",
+			name: "Smooth Driver",
+			icon: <TrendingUp />,
+			level: 4,
+			progress: 92,
+		},
+		{
+			id: "safe",
+			name: "Safe Driver",
+			icon: <Shield />,
+			level: 2,
+			progress: 68,
+		},
+		{
+			id: "regular",
+			name: "Regular Driver",
+			icon: <Clock />,
+			level: 5,
+			progress: 100,
+		},
 	];
 
 	// Ranking data
@@ -76,6 +94,7 @@ const SuiSuiDriveDashboard = () => {
 				<div className="flex items-center justify-between">
 					<div className="flex items-center">
 						<svg width="32" height="32" viewBox="0 0 40 40" className="mr-2">
+							<title>SuiSuiDrive Logo</title>
 							<circle cx="20" cy="20" r="20" fill="#00BFFF" />
 							<path
 								d="M8 20C8 13.373 13.373 8 20 8C26.627 8 32 13.373 32 20"
@@ -101,10 +120,11 @@ const SuiSuiDriveDashboard = () => {
 						>
 							<span
 								className={`inline-block w-2 h-2 rounded-full mr-1 ${isLive ? "bg-green-400 animate-pulse" : "bg-gray-400"}`}
-							></span>
+							/>
 							<span className="text-xs mr-2">LIVE</span>
 						</div>
 						<button
+							type="button"
 							onClick={() => setIsLive(!isLive)}
 							className={`px-2 py-1 rounded text-xs font-medium ${isLive ? "bg-red-500 hover:bg-red-600" : "bg-green-500 hover:bg-green-600"}`}
 						>
@@ -118,6 +138,7 @@ const SuiSuiDriveDashboard = () => {
 			<div className="bg-white border-b sticky top-12 z-10">
 				<div className="flex justify-around">
 					<button
+						type="button"
 						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "realtime" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500"}`}
 						onClick={() => setActiveTab("realtime")}
 					>
@@ -125,6 +146,7 @@ const SuiSuiDriveDashboard = () => {
 						Real-time
 					</button>
 					<button
+						type="button"
 						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "achievements" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500"}`}
 						onClick={() => setActiveTab("achievements")}
 					>
@@ -132,6 +154,7 @@ const SuiSuiDriveDashboard = () => {
 						Achievements
 					</button>
 					<button
+						type="button"
 						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "rankings" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500"}`}
 						onClick={() => setActiveTab("rankings")}
 					>
@@ -225,11 +248,11 @@ const SuiSuiDriveDashboard = () => {
 										</div>
 										<div className="flex gap-1 text-xs">
 											<div className="flex items-center">
-												<span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-1"></span>
+												<span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-1" />
 												<span>Completed</span>
 											</div>
 											<div className="flex items-center ml-1">
-												<span className="inline-block w-2 h-2 rounded-full bg-blue-500 mr-1"></span>
+												<span className="inline-block w-2 h-2 rounded-full bg-blue-500 mr-1" />
 												<span>Processing</span>
 											</div>
 										</div>
@@ -264,7 +287,7 @@ const SuiSuiDriveDashboard = () => {
 										<div
 											style={{ width: `${ecoScore}%` }}
 											className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
-										></div>
+										/>
 									</div>
 									<p className="text-xs text-gray-500">
 										Earn SUI with fuel-efficient driving!
@@ -295,7 +318,7 @@ const SuiSuiDriveDashboard = () => {
 										<div
 											style={{ width: `${safetyScore}%` }}
 											className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
-										></div>
+										/>
 									</div>
 									<p className="text-xs text-gray-500">
 										Get more SUI with safe driving!
@@ -320,9 +343,9 @@ const SuiSuiDriveDashboard = () => {
 
 						<div className="p-3">
 							<div className="grid grid-cols-1 gap-3">
-								{badges.map((badge, index) => (
+								{badges.map((badge) => (
 									<div
-										key={index}
+										key={badge.id}
 										className="border rounded-lg p-2 flex items-center"
 									>
 										<div className="w-10 h-10 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center mr-2 flex-shrink-0">
@@ -342,7 +365,7 @@ const SuiSuiDriveDashboard = () => {
 													<div
 														style={{ width: `${badge.progress}%` }}
 														className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
-													></div>
+													/>
 												</div>
 												<div className="flex items-center justify-between text-xs text-gray-500">
 													<span>{badge.progress}%</span>
@@ -368,7 +391,10 @@ const SuiSuiDriveDashboard = () => {
 								<p className="text-xs text-green-700">
 									Earn SUI based on your badge levels. Keep leveling up!
 								</p>
-								<button className="mt-2 w-full py-1 bg-green-600 hover:bg-green-700 text-white rounded-md text-xs font-medium">
+								<button
+									type="button"
+									className="mt-2 w-full py-1 bg-green-600 hover:bg-green-700 text-white rounded-md text-xs font-medium"
+								>
 									Claim Rewards
 								</button>
 							</div>
@@ -461,7 +487,7 @@ const SuiSuiDriveDashboard = () => {
 																<div
 																	style={{ width: `${driver.score}%` }}
 																	className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
-																></div>
+																/>
 															</div>
 														</div>
 													</div>
@@ -476,7 +502,10 @@ const SuiSuiDriveDashboard = () => {
 							</div>
 
 							<div className="mt-3 text-center">
-								<button className="text-blue-600 text-xs font-medium">
+								<button
+									type="button"
+									className="text-blue-600 text-xs font-medium"
+								>
 									View All Rankings →
 								</button>
 							</div>
@@ -489,7 +518,7 @@ const SuiSuiDriveDashboard = () => {
 			<div className="bg-gray-100 p-2 border-t flex justify-between items-center text-xs text-gray-500 mt-auto">
 				<div>SuiSuiDrive v1.2.0</div>
 				<div className="flex items-center">
-					<span className="bg-green-500 rounded-full w-2 h-2 mr-1"></span>
+					<span className="bg-green-500 rounded-full w-2 h-2 mr-1" />
 					<span>Blockchain Connected</span>
 				</div>
 			</div>
