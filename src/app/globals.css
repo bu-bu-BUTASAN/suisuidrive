@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+@tailwind utilities;
+
+/* ダッシュボードのメトリクス表示用スタイル */
+@layer components {
+	/**
+	 * メインメトリクス（速度、距離、SUI支払い）の数値表示
+	 */
+	.metric-value {
+		@apply text-2xl font-bold text-gray-900;
+	}
+
+	/**
+	 * メインメトリクスの単位表示
+	 */
+	.metric-unit {
+		@apply text-gray-500 text-xs ml-1 mb-1;
+	}
+
+	/**
+	 * スコア表示（エコスコア、安全スコア）の数値
+	 */
+	.score-value {
+		@apply text-xs font-semibold inline-block;
+	}
+
+	/**
+	 * スコアのSUI報酬表示
+	 */
+	.score-reward {
+		@apply text-xs font-semibold inline-block;
+	}
+
+	/* エコスコア用のバリエーション */
+	.score-value--eco {
+		@apply text-green-600;
+	}
+
+	.score-reward--eco {
+		@apply text-green-600;
+	}
+
+	/* 安全スコア用のバリエーション */
+	.score-value--safety {
+		@apply text-blue-600;
+	}
+
+	.score-reward--safety {
+		@apply text-blue-600;
+	}
 }

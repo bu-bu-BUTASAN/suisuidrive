@@ -139,7 +139,7 @@ const SuiSuiDriveDashboard = () => {
 				<div className="flex justify-around">
 					<button
 						type="button"
-						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "realtime" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500"}`}
+						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "realtime" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700"}`}
 						onClick={() => setActiveTab("realtime")}
 					>
 						<Activity size={16} className="mb-1" />
@@ -147,7 +147,7 @@ const SuiSuiDriveDashboard = () => {
 					</button>
 					<button
 						type="button"
-						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "achievements" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500"}`}
+						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "achievements" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700"}`}
 						onClick={() => setActiveTab("achievements")}
 					>
 						<Award size={16} className="mb-1" />
@@ -155,7 +155,7 @@ const SuiSuiDriveDashboard = () => {
 					</button>
 					<button
 						type="button"
-						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "rankings" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-500"}`}
+						className={`flex-1 py-3 font-medium text-xs flex flex-col items-center justify-center ${activeTab === "rankings" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700"}`}
 						onClick={() => setActiveTab("rankings")}
 					>
 						<Users size={16} className="mb-1" />
@@ -179,8 +179,8 @@ const SuiSuiDriveDashboard = () => {
 									<Clock size={14} className="text-blue-500" />
 								</div>
 								<div className="flex items-end">
-									<span className="text-2xl font-bold">{currentSpeed}</span>
-									<span className="text-gray-500 text-xs ml-1 mb-1">km/h</span>
+									<span className="metric-value">{currentSpeed}</span>
+									<span className="metric-unit">km/h</span>
 								</div>
 							</div>
 							<div className="bg-white rounded-lg shadow p-3">
@@ -191,10 +191,10 @@ const SuiSuiDriveDashboard = () => {
 									<MapPin size={14} className="text-blue-500" />
 								</div>
 								<div className="flex items-end">
-									<span className="text-2xl font-bold">
+									<span className="metric-value">
 										{distanceTraveled.toFixed(1)}
 									</span>
-									<span className="text-gray-500 text-xs ml-1 mb-1">km</span>
+									<span className="metric-unit">km</span>
 								</div>
 							</div>
 							<div className="bg-white rounded-lg shadow p-3 col-span-2">
@@ -205,10 +205,8 @@ const SuiSuiDriveDashboard = () => {
 									<DollarSign size={14} className="text-blue-500" />
 								</div>
 								<div className="flex items-end">
-									<span className="text-2xl font-bold">
-										{suiSpent.toFixed(4)}
-									</span>
-									<span className="text-gray-500 text-xs ml-1 mb-1">SUI</span>
+									<span className="metric-value">{suiSpent.toFixed(4)}</span>
+									<span className="metric-unit">SUI</span>
 								</div>
 							</div>
 						</div>
@@ -273,12 +271,12 @@ const SuiSuiDriveDashboard = () => {
 								<div className="relative">
 									<div className="flex items-center justify-between">
 										<div>
-											<span className="text-xs font-semibold inline-block text-green-600">
+											<span className="score-value score-value--eco">
 												{Math.round(ecoScore)}%
 											</span>
 										</div>
 										<div className="text-right">
-											<span className="text-xs font-semibold inline-block text-green-600">
+											<span className="score-reward score-reward--eco">
 												+{(ecoScore >= 80 ? 0.002 : 0.001).toFixed(3)} SUI/km
 											</span>
 										</div>
@@ -304,12 +302,12 @@ const SuiSuiDriveDashboard = () => {
 								<div className="relative">
 									<div className="flex items-center justify-between">
 										<div>
-											<span className="text-xs font-semibold inline-block text-blue-600">
+											<span className="score-value score-value--safety">
 												{Math.round(safetyScore)}%
 											</span>
 										</div>
 										<div className="text-right">
-											<span className="text-xs font-semibold inline-block text-blue-600">
+											<span className="score-reward score-reward--safety">
 												+{(safetyScore >= 90 ? 0.003 : 0.001).toFixed(3)} SUI/km
 											</span>
 										</div>
